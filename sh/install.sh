@@ -137,7 +137,8 @@ function install_pip() {
     PYTHON_PATH=$1
     ver=$($PYTHON_PATH -V 2>&1 | sed 's/.* \([0-9]\).\([0-9]\).*/\1\2/')
     if [ "$ver" -lt "30" ]; then
-        curl -o /tmp/get-pip.py https://bootstrap.pypa.io/2.7/get-pip.py >> ${INSTALL_LOG} 2>&1
+        #curl -o /tmp/get-pip.py https://bootstrap.pypa.io/2.7/get-pip.py >> ${INSTALL_LOG} 2>&1
+        yum -y install python-pip
     elif [ "$ver" -ge "30" ]; then
         curl -o /tmp/get-pip.py https://bootstrap.pypa.io/get-pip.py >> ${INSTALL_LOG} 2>&1
     fi
